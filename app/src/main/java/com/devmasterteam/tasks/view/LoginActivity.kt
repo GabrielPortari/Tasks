@@ -10,7 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.devmasterteam.tasks.databinding.ActivityLoginBinding
 import com.devmasterteam.tasks.viewmodel.LoginViewModel
 
-class LoginActivity : AppCompatActivity(){
+class LoginActivity : AppCompatActivity() {
 
     private lateinit var viewModel: LoginViewModel
     private lateinit var binding: ActivityLoginBinding
@@ -35,23 +35,34 @@ class LoginActivity : AppCompatActivity(){
 
         }
 
+        // Verificar se existe um usuário logado
+        viewModel.verifyLoggedUser()
+
         // Observadores
         observe()
     }
 
     private fun observe() {
         viewModel.login.observe(this) {
-            if(it.status()) {
+            if (it.status()) {
                 val intent = Intent(applicationContext, MainActivity::class.java)
                 startActivity(intent)
                 finish()
-            }else{
+            } else {
                 Toast.makeText(applicationContext, it.message(), Toast.LENGTH_SHORT).show()
+            }
+        }
+
+        viewModel.loggedUser.observe(this) {
+            if(it){
+                val intent = Intent(applicationContext, MainActivity::class.java)
+                startActivity(intent)
+                finish()
             }
         }
     }
 
-    private fun handleLogin(){
+    private fun handleLogin() {
         val email = binding.editEmail.text.toString()
         val password = binding.editPassword.text.toString()
 
