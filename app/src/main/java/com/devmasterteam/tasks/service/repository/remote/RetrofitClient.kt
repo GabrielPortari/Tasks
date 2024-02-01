@@ -1,7 +1,6 @@
 package com.devmasterteam.tasks.service.repository.remote
 
 import com.devmasterteam.tasks.service.constants.TaskConstants
-import com.devmasterteam.tasks.service.repository.local.PersonService
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.Response

@@ -1,4 +1,4 @@
-package com.devmasterteam.tasks.service.repository.local
+package com.devmasterteam.tasks.service.repository.remote
 
 import com.devmasterteam.tasks.service.model.PersonModel
 import retrofit2.Call
