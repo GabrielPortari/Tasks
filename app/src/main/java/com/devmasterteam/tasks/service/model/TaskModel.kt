@@ -9,6 +9,8 @@ class TaskModel {
         "DueDate": "2019-06-25",
         "Complete": true*/
 
+    var priorityDescription : String = ""
+
     @SerializedName("Id")
     var id: Int = 0
 
@@ -16,7 +18,7 @@ class TaskModel {
     var priorityId: Int = 0
 
     @SerializedName("Description")
-    var descriptyion: String = ""
+    var description: String = ""
 
     @SerializedName("DueDate")
     var dueDate: String = ""
