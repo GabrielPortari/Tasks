@@ -24,6 +24,7 @@ class LoginActivity : AppCompatActivity() {
 
         // Layout
         setContentView(binding.root)
+        supportActionBar?.hide()
 
         // Click listener no botão de login
         binding.buttonLogin.setOnClickListener {

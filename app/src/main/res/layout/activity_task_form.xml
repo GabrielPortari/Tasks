@@ -19,9 +19,9 @@
 
     <View
         android:id="@+id/view_description"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/black"
+        style="@style/ViewDivider"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edit_description" />
 
     <TextView
@@ -44,9 +44,8 @@
         app:layout_constraintTop_toBottomOf="@+id/text_priority" />
 
     <View
+        style="@style/ViewDivider"
         android:id="@+id/view_complete"
-        android:layout_width="0dp"
-        android:layout_height="1dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinner_priority" />
@@ -64,8 +63,7 @@
 
     <View
         android:id="@+id/view_date"
-        android:layout_width="0dp"
-        android:layout_height="1dp"
+        style="@style/ViewDivider"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/check_complete" />
@@ -85,13 +83,13 @@
 
     <View
         android:id="@+id/view_save"
-        android:layout_width="0dp"
-        android:layout_height="1dp"
+        style="@style/ViewDivider"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/button_date" />
 
     <Button
+        style="@style/DefaultButtons"
         android:id="@+id/button_save"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
