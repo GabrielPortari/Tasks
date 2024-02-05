@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.biometric.BiometricPrompt
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.devmasterteam.tasks.databinding.ActivityLoginBinding
@@ -38,7 +40,7 @@ class LoginActivity : AppCompatActivity() {
         }
 
         // Verificar se existe um usuário logado
-        viewModel.verifyLoggedUser()
+        viewModel.verifyAuthentication()
 
         // Observadores
         observe()
@@ -57,11 +59,30 @@ class LoginActivity : AppCompatActivity() {
 
         viewModel.loggedUser.observe(this) {
             if(it){
+                biometricAuthentication()
+            }
+        }
+    }
+
+    private fun biometricAuthentication(){
+        val executor = ContextCompat.getMainExecutor(this)
+        val bio = BiometricPrompt(this, executor, object: BiometricPrompt.AuthenticationCallback() {
+            override fun onAuthenticationSucceeded(result: BiometricPrompt.AuthenticationResult) {
+                super.onAuthenticationSucceeded(result)
                 val intent = Intent(applicationContext, MainActivity::class.java)
                 startActivity(intent)
                 finish()
             }
-        }
+        })
+
+        val info = BiometricPrompt.PromptInfo.Builder()
+            .setTitle("Titulo")
+            .setSubtitle("Subtitulo")
+            .setDescription("Descrição")
+            .setNegativeButtonText("Cancelar")
+            .build()
+
+        bio.authenticate(info)
     }
 
     private fun handleLogin() {
