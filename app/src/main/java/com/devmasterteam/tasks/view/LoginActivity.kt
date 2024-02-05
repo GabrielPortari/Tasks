@@ -32,7 +32,8 @@ class LoginActivity : AppCompatActivity() {
 
         //Click listener no textview de fazer cadastro
         binding.textRegister.setOnClickListener {
-
+            val intent = Intent(this, RegisterActivity::class.java)
+            startActivity(intent)
         }
 
         // Verificar se existe um usuário logado
